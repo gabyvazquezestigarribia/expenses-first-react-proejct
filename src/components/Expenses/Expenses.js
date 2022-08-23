@@ -6,8 +6,7 @@ import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 
 const Expenses = (props) => {
-
-  const [filterYear, setFilterYear] = useState('2021');
+  const [filterYear, setFilterYear] = useState("2021");
 
   const yearSelectedHandler = (year) => {
     console.log("Desde Expenses");
@@ -17,28 +16,20 @@ const Expenses = (props) => {
 
   return (
     <Card className="expenses">
-      <ExpenseFilter selected={filterYear} onYearSelected={yearSelectedHandler}></ExpenseFilter>
-      <ExpenseItem
-        title={props.expenses[0].title}
-        amount={props.expenses[0].amount}
-        date={props.expenses[0].date}
-      />
-      <ExpenseItem
-        title={props.expenses[1].title}
-        amount={props.expenses[1].amount}
-        date={props.expenses[1].date}
-      />
-      <ExpenseItem
-        title={props.expenses[2].title}
-        amount={props.expenses[2].amount}
-        date={props.expenses[2].date}
-      />
-      <ExpenseItem
-        title={props.expenses[3].title}
-        amount={props.expenses[3].amount}
-        date={props.expenses[3].date}
-        Card
-      />
+      <ExpenseFilter
+        selected={filterYear}
+        onYearSelected={yearSelectedHandler}
+      ></ExpenseFilter>
+
+      {props.expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))}
+
     </Card>
   );
 };
