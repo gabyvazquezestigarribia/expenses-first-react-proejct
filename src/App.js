@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Expenses from "./components/Expenses/Expenses";
+import AddNewExpense from "./components/NewExpense/AddNewExpense";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 const DUMMY_EXPENSES = [
@@ -43,7 +44,7 @@ const App = () => {
     });
   };
 
-   /**Como hice para la tarea */
+  /**Como hice para la tarea */
   // Aqui obtenemos el año seleccionado desde el componenente ExpenseFilter
   /*const yearSelectedHandler = ( newYear ) => {
 
@@ -58,10 +59,39 @@ const App = () => {
   // Agregar asi
   // <Expenses expenses={filterExpenses} onYearSelected={yearSelectedHandler} />
 
+  const [showFormNewExpense, setShowFormNewExpense] = useState(false);
+
+  /** Tenemos el valor si se presiono el boton "Add New Expense"
+   * Si es true, mostrar el formulario
+   * Si es false, mostrar el boton "Add New Expense"
+   */
+  const showFormHandler = (clicked) => {
+    setShowFormNewExpense(clicked);
+  };
+
+  /** Tenemos el valor si se presiono el boton "Cancel"
+   * Si es true, mostrar el boton "Add New Expense"
+   * Si es false, mostrar el formulario.
+   */
+  const showAddNewExpenseButtonHandler = (cancelStatus) => {
+    const formStatus = !cancelStatus;
+    setShowFormNewExpense(formStatus);
+  };
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses}  />
+      {!showFormNewExpense && (
+        <AddNewExpense onClickAddNewExpense={showFormHandler} />
+      )}
+
+      {showFormNewExpense && (
+        <NewExpense
+          onAddExpense={addExpenseHandler}
+          onCancelButtonStatus={showAddNewExpenseButtonHandler}
+        />
+      )}
+
+      <Expenses expenses={expenses} />
     </div>
   );
 };

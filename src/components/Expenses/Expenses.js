@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
+import ExpenseList from "./ExpensesList";
 
 const Expenses = (props) => {
   const [filterYear, setFilterYear] = useState("2021");
@@ -20,9 +21,9 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filterYear;
   });
 
-  let expensesContent = <p>No expenses found.</p>;
+  /*let expensesContent = <p>No expenses found.</p>;
   
-  if( expensesContent.length > 0) {
+  if( filterExpenses.length > 0) {
     expensesContent = filterExpenses.map((expense) => (
       <ExpenseItem
         key={expense.id}
@@ -31,7 +32,7 @@ const Expenses = (props) => {
         date={expense.date}
       />
     ));
-  }
+  }*/
 
   return (
     <Card className="expenses">
@@ -39,7 +40,7 @@ const Expenses = (props) => {
         selected={filterYear}
         onYearSelected={yearSelectedHandler}
       ></ExpenseFilter>
-      {expensesContent}
+      <ExpenseList expenses={filterExpenses} />
     </Card>
   );
 };
@@ -66,3 +67,6 @@ export default Expenses;
         />
       ))}
  */
+
+// esto tenia el return cuando ExpensesList no existia
+//{expensesContent}

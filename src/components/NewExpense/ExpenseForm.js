@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = ( props ) => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [cancelStatus, setCancelStatus] = useState(true);
   /* const [ userInput, setUserInput ] = useState({
     enteredTitle  : '', 
     enteredAmount : '', 
@@ -49,10 +50,19 @@ const ExpenseForm = ( props ) => {
     props.onSaveExpenseData(expenseData);
 
     // Limpiar el formulario
-    setEnteredTitle('');
-    setEnteredDate('');
-    setEnteredAmount('');
+    setEnteredTitle("");
+    setEnteredDate("");
+    setEnteredAmount("");
   };
+
+  /**
+   * Enviar true cuando se cliquea el boton Cancel
+   */
+  const clickedCancelHandler = () => {
+    setCancelStatus(true);
+    props.onClickCancelButton(cancelStatus);
+    //console.log("from expense form", cancelStatus);
+  }
 
   return (
     <form onSubmit={submitHadler}>
@@ -90,6 +100,7 @@ const ExpenseForm = ( props ) => {
       </div>
 
       <div className="new-expense__actions">
+        <button onClick={clickedCancelHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
