@@ -61,7 +61,6 @@ const ExpenseForm = (props) => {
   const clickedCancelHandler = () => {
     setCancelStatus(true);
     props.onClickCancelButton(cancelStatus);
-    //console.log("from expense form", cancelStatus);
   }
 
   return (

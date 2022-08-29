@@ -22,7 +22,6 @@ const NewExpense = ( props ) => {
   const clickedCancelHandler = (cancelButtonStatus) => {
       setCancelStatus(cancelButtonStatus);
       props.onCancelButtonStatus(cancelStatus);
-     // console.log("from new expense",cancelStatus );
   }
 
 

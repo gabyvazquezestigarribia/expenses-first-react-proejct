@@ -30,6 +30,8 @@ const App = () => {
   // inicializamos expenses  array con la lista dummy
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
+  const [showFormNewExpense, setShowFormNewExpense] = useState(false);
+
   /**Como hice para la tarea */
   // expenses filter by year selected
   //const [filterExpenses, setFilterExpense] = useState(expenses);
@@ -38,10 +40,13 @@ const App = () => {
     // agregar cada expense a la lista de expenses.
     // Usar state, porque REACT no actualiza el componente si agrego solo a la lista
 
-    // agregamos el nuevo expense al inicio del array, y luego copiamos el resto
+    // Agregamos el nuevo expense al inicio del array, y luego copiamos el resto
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
+
+    // Una vez que se presione "Add expense", mostrar el formulario de vuelta
+    setShowFormNewExpense(false);
   };
 
   /**Como hice para la tarea */
@@ -59,9 +64,7 @@ const App = () => {
   // Agregar asi
   // <Expenses expenses={filterExpenses} onYearSelected={yearSelectedHandler} />
 
-  const [showFormNewExpense, setShowFormNewExpense] = useState(false);
-
-  /** Tenemos el valor si se presiono el boton "Add New Expense"
+   /** Tenemos el valor si se presiono el boton "Add New Expense"
    * Si es true, mostrar el formulario
    * Si es false, mostrar el boton "Add New Expense"
    */
@@ -77,6 +80,8 @@ const App = () => {
     const formStatus = !cancelStatus;
     setShowFormNewExpense(formStatus);
   };
+
+  console.log(showFormNewExpense);
 
   return (
     <div>
