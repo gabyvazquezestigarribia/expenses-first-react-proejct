@@ -32,12 +32,8 @@ const App = () => {
 
   const [showFormNewExpense, setShowFormNewExpense] = useState(false);
 
-  /**Como hice para la tarea */
-  // expenses filter by year selected
-  //const [filterExpenses, setFilterExpense] = useState(expenses);
-
   const addExpenseHandler = (expense) => {
-    // agregar cada expense a la lista de expenses.
+    // Agregar cada expense a la lista de expenses.
     // Usar state, porque REACT no actualiza el componente si agrego solo a la lista
 
     // Agregamos el nuevo expense al inicio del array, y luego copiamos el resto
@@ -49,22 +45,7 @@ const App = () => {
     setShowFormNewExpense(false);
   };
 
-  /**Como hice para la tarea */
-  // Aqui obtenemos el año seleccionado desde el componenente ExpenseFilter
-  /*const yearSelectedHandler = ( newYear ) => {
-
-    // filtramos la lista completa por el año
-    const filterList = expenses.filter( (expense) => {
-      return expense.date.getFullYear().toString() === newYear
-    });
-    // esta lista es la que se le envia al componente Expenses para dibujar
-    setFilterExpense(filterList);    
-  }*/
-
-  // Agregar asi
-  // <Expenses expenses={filterExpenses} onYearSelected={yearSelectedHandler} />
-
-   /** Tenemos el valor si se presiono el boton "Add New Expense"
+  /** Tenemos el valor si se presiono el boton "Add New Expense"
    * Si es true, mostrar el formulario
    * Si es false, mostrar el boton "Add New Expense"
    */
@@ -80,8 +61,6 @@ const App = () => {
     const formStatus = !cancelStatus;
     setShowFormNewExpense(formStatus);
   };
-
-  console.log(showFormNewExpense);
 
   return (
     <div>
