@@ -5,6 +5,7 @@ import ExpenseFilter from "./ExpenseFilter";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpenseList from "./ExpensesList";
+import ExpenseChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [filterYear, setFilterYear] = useState("2021");
@@ -14,6 +15,8 @@ const Expenses = (props) => {
   };
 
   /**Como hizo el profe para filtrar */
+  // SetFilterYear ya hace que se recargue el componente
+  // Por esto no necesitamos crear un estado para manejar expenses
   const filterExpenses = props.expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === filterYear;
   });
@@ -24,6 +27,7 @@ const Expenses = (props) => {
         selected={filterYear}
         onYearSelected={yearSelectedHandler}
       ></ExpenseFilter>
+      <ExpenseChart expenses={filterExpenses} />
       <ExpenseList expenses={filterExpenses} />
     </Card>
   );
